@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 	"student_management/service"
-
+	"fmt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -17,7 +17,9 @@ type Dbinstance struct {
 var Database Dbinstance
 
 func ConnectDb() {
-	dsn := "host=localhost user=postgres password=haSH1003 dbname=student_management port=5432 sslmode=disable"
+	// dsn := "host=localhost user=postgres password=haSH1003 dbname=student_management port=5432 sslmode=disable"
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
+		"35.237.203.194", "postgres", "haSH1003","student_management", "5432")
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed to connect to the database! \n", err.Error())

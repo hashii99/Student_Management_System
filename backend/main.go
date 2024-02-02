@@ -15,7 +15,8 @@ func welcome(c *fiber.Ctx) error {
 // routes setup function
 func SetupRoutes(app *fiber.App) {
 	api := app.Group("/api/students")
-	api.Get("", welcome)
+	// api.Get("", welcome)
+	
 	// student endpoints
 	api.Post("", handler.CreateStudent)
 	api.Get("", handler.GetAllStudents)
